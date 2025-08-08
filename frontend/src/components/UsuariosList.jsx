@@ -1,9 +1,8 @@
 export default function UsuarioList({ usuarios, onEdit, onDelete }) {
   return (
-    <table border="1" cellPadding="5" style={{ borderCollapse: "collapse" }}>
+    <table>
       <thead>
         <tr>
-          <th>ID</th>
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Email</th>
@@ -15,15 +14,26 @@ export default function UsuarioList({ usuarios, onEdit, onDelete }) {
       <tbody>
         {usuarios.map((u) => (
           <tr key={u.id}>
-            <td>{u.id}</td>
             <td>{u.nombre}</td>
             <td>{u.apellido}</td>
             <td>{u.email}</td>
             <td>{u.telefono}</td>
             <td>{u.rol}</td>
             <td>
-              <button onClick={() => onEdit(u)}>Editar</button>
-              <button onClick={() => onDelete(u.id)}>Eliminar</button>
+              <button className="edit-btn" onClick={() => onEdit(u)}>Editar</button>
+              <button
+                className="delete-btn"
+                onClick={() => {
+                  const confirmar = window.confirm(
+                    `¿Está seguro que desea eliminar a este usuario: ${u.nombre} (${u.rol})?`
+                  );
+                  if (confirmar) {
+                    onDelete(u.id);
+                  }
+                }}
+              >
+                Eliminar
+              </button>
             </td>
           </tr>
         ))}

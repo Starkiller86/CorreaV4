@@ -1,10 +1,23 @@
 /* General */
 body {
-  background-color: #f3f4f6;
+  background-color: #c9b2a7;
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
 }
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+header img {
+  flex-direction: column;
+  height: 50px;
+}
+
 
 /* Contenedor principal */
 .container {
@@ -19,7 +32,7 @@ body {
 /* Título */
 h1 {
   text-align: center;
-  color: #2c7a7b;
+  color: #4c321c;
   margin-bottom: 30px;
 }
 
@@ -41,7 +54,7 @@ input, select {
 button {
   grid-column: span 2;
   padding: 12px;
-  background-color: #2c7a7b;
+  background-color: #427b2c;
   color: white;
   border: none;
   border-radius: 4px;
@@ -52,7 +65,7 @@ button {
 }
 
 button:hover {
-  background-color: #285e61;
+  background-color: #233f17;
 }
 
 /* Tabla */
@@ -68,7 +81,7 @@ th, td {
 }
 
 th {
-  background-color: #2c7a7b;
+  background-color: #5a3e20;
   color: white;
 }
 

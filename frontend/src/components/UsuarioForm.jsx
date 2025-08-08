@@ -29,7 +29,7 @@ export default function UsuarioForm({ onSave, usuarioEdit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: "20px" }}>
+    <form onSubmit={handleSubmit}>
       <input
         name="nombre"
         placeholder="Nombre"

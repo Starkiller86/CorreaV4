@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import UsuarioForm from "./components/UsuarioForm";
 import UsuarioList from "./components/UsuariosList";
 import { getUsuarios, createUsuario, updateUsuario, deleteUsuario } from "./services/usuariosService";
+import logo from "./assets/Frame1.png";
 
 export default function App() {
   const [usuarios, setUsuarios] = useState([]);
@@ -36,8 +37,9 @@ export default function App() {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>CRUD Usuarios - Los Correa</h1>
+    <div className="container">
+      <img src={logo} alt="Logo Los Correa" style={{ height: '100px' }} />
+      <h1>Usuarios</h1>
       <UsuarioForm onSave={guardarUsuario} usuarioEdit={usuarioEdit} />
       <UsuarioList usuarios={usuarios} onEdit={editarUsuario} onDelete={eliminarUsuario} />
     </div>
