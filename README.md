@@ -119,6 +119,23 @@ Tabla: `usuarios`
     database: process.env.DB_NAME,
   });
 
+  ### Backend
+
+- **server.js**
+  ```js
+  import express from 'express';
+  import cors from 'cors';
+  import usuariosRoutes from './routes/usuarios.js';
+
+  const app = express();
+
+  app.use(cors());
+  app.use(express.json());
+  app.use('/api/usuarios', usuariosRoutes);
+  const PORT = process.env.PORT || 3306;
+  app.listen(PORT, () => console.log(`Servidor en puerto ${PORT}`));
+
+
 Próximos Pasos
 Crear la base de datos y tabla en MySQL con el esquema proporcionado.
 
