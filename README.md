@@ -7,32 +7,28 @@ Este proyecto es un sistema web para administrar usuarios de un restaurante llam
 
 ## Estructura del Proyecto
 
-los-correa/
-├── backend/
-│ ├── db.js # Configuración y conexión a MySQL
-│ ├── server.js # Servidor Express con endpoints CRUD
-│ ├── controllers/ # Lógica para manejar usuarios
-│ ├── models/ # Modelo y queries MySQL para usuarios
-│ ├── routes/ # Rutas API REST
-│ └── .env # Variables de entorno (DB credentials)
-│
-├── frontend/
-│ ├── public/
-│ ├── src/
-│ │ ├── components/ # Componentes React (ListaUsuarios, FormUsuario, etc)
-│ │ ├── pages/ # Páginas (UsuariosPage)
-│ │ ├── App.jsx # Rutas y configuración React Router
-│ │ ├── main.jsx # Punto de entrada
-│ │ └── styles/ # Estilos Tailwind CSS o personalizados
-│ ├── package.json
-│ └── vite.config.js
-│
-├── README.md
-└── package.json (para scripts raíz si es necesario)
-
-yaml
-Copiar
-Editar
+los-correa/  
+├── backend/  
+│   ├── db.js              # Configuración y conexión a MySQL  
+│   ├── server.js          # Servidor Express con endpoints CRUD  
+│   ├── controllers/       # Lógica para manejar usuarios  
+│   ├── models/            # Modelo y queries MySQL para usuarios  
+│   ├── routes/            # Rutas API REST  
+│   └── .env               # Variables de entorno (credenciales BD)  
+│  
+├── frontend/  
+│   ├── public/  
+│   ├── src/  
+│   │   ├── components/    # Componentes React (ListaUsuarios, FormUsuario, etc)  
+│   │   ├── pages/         # Páginas (UsuariosPage)  
+│   │   ├── App.jsx        # Rutas y configuración React Router  
+│   │   ├── main.jsx       # Punto de entrada  
+│   │   └── styles/        # Estilos Tailwind CSS o personalizados  
+│   ├── package.json  
+│   └── vite.config.js  
+│  
+├── README.md  
+└── package.json           # Scripts raíz si es necesario  
 
 ---
 
@@ -42,15 +38,15 @@ Base de datos: `los_correa`
 
 Tabla: `usuarios`
 
-| Campo          | Tipo                           | Atributos                                       | Descripción                        |
-| -------------- | ------------------------------| -----------------------------------------------| --------------------------------- |
-| id             | INT                           | PRIMARY KEY, AUTO_INCREMENT                    | Identificador único               |
-| nombre         | VARCHAR(50)                   | NOT NULL                                      | Nombre del usuario                |
-| apellido       | VARCHAR(50)                   | NOT NULL                                      | Apellido del usuario              |
-| email          | VARCHAR(100)                  | UNIQUE, NOT NULL                              | Correo electrónico                |
-| telefono       | VARCHAR(15)                   |                                               | Número de teléfono                |
-| rol            | ENUM('mesero', 'host')        | NOT NULL                                     | Rol del usuario                  |
-| creado_en      | TIMESTAMP                    | DEFAULT CURRENT_TIMESTAMP                      | Fecha de creación                |
+| Campo          | Tipo                                  | Atributos                                            | Descripción                   |
+| -------------- | ------------------------------------ | --------------------------------------------------- | ----------------------------- |
+| id             | INT                                  | PRIMARY KEY, AUTO_INCREMENT                         | Identificador único           |
+| nombre         | VARCHAR(50)                          | NOT NULL                                           | Nombre del usuario            |
+| apellido       | VARCHAR(50)                          | NOT NULL                                           | Apellido del usuario          |
+| email          | VARCHAR(100)                         | UNIQUE, NOT NULL                                   | Correo electrónico            |
+| telefono       | VARCHAR(15)                          |                                                   | Número de teléfono            |
+| rol            | ENUM('mesero', 'host')               | NOT NULL                                           | Rol del usuario               |
+| creado_en      | TIMESTAMP                           | DEFAULT CURRENT_TIMESTAMP                           | Fecha de creación             |
 
 ---
 
@@ -81,16 +77,15 @@ Tabla: `usuarios`
     ```
     DB_HOST=localhost
     DB_USER=tu_usuario
-    DB_PASSWORD=tu_contraseña
+    DB_PASSWORD=
     DB_NAME=los_correa
-    PORT=4000
+    PORT=3306
     ```
 
 2. Ejecutar servidor:
     ```bash
     cd backend
-    npm install
-    npm start
+    npx nodemon server.js
     ```
 
 ### Frontend
@@ -123,24 +118,8 @@ Tabla: `usuarios`
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
   });
-server.js
 
-js
-Copiar
-Editar
-import express from 'express';
-import cors from 'cors';
-import usuariosRoutes from './routes/usuarios.js';
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-app.use('/api/usuarios', usuariosRoutes);
-
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Servidor en puerto ${PORT}`));
-Próximos pasos
+Próximos Pasos
 Crear la base de datos y tabla en MySQL con el esquema proporcionado.
 
 Implementar rutas CRUD en backend.
@@ -148,3 +127,5 @@ Implementar rutas CRUD en backend.
 Construir componentes React que consuman la API.
 
 Probar integración frontend-backend.
+
+Mejorar con validaciones, autenticación y UI.
